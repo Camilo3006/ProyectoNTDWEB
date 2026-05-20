@@ -1,0 +1,25 @@
+<div class="login-body">
+  <div class="overlay"></div>
+
+  <div class="login-container fade-in">
+    <img src="assets/img/logo.png" class="logo-login" alt="Logo">
+    <h1>Tripify</h1>
+
+    <div class="tabs">
+      <button (click)="cambiarTab('login')" [class.active]="tabActiva === 'login'">Login</button>
+      <button (click)="cambiarTab('registro')" [class.active]="tabActiva === 'registro'">Registro</button>
+    </div>
+
+    <div *ngIf="tabActiva === 'login'">
+      <input [(ngModel)]="usuarioData.usuario" placeholder="Usuario">
+      <input [(ngModel)]="usuarioData.password" type="password" placeholder="Contraseña">
+      <button class="btn-main" (click)="alIngresar()">Ingresar</button>
+    </div>
+
+    <div *ngIf="tabActiva === 'registro'">
+      <input [(ngModel)]="usuarioData.usuario" placeholder="Usuario">
+      <input [(ngModel)]="usuarioData.password" type="password" placeholder="Contraseña">
+      <button class="btn-main" (click)="alRegistrar()">Registrarse</button>
+    </div>
+  </div>
+</div>

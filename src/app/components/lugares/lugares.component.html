@@ -1,0 +1,42 @@
+<header class="navbar">
+  <div class="nav-left">
+    <img src="assets/img/logo.png" class="logo" alt="Logo">
+    <h2>Tripify</h2>
+  </div>
+
+  <div class="nav-center">
+    <span>{{ usuarioActivo }}</span>
+  </div>
+
+  <div class="nav-right">
+    <button (click)="alternarAyuda(true)">❓ Ayuda</button>
+    <button (click)="eliminarCuenta()">🗑️ Eliminar cuenta</button>
+    <button (click)="logout()">🚪 Cerrar sesión</button>
+  </div>
+</header>
+
+<h1>🌍 Lugares turísticos de Colombia</h1>
+
+<button class="btn-pdf" (click)="exportarPDF()">📄 Exportar PDF</button>
+
+<div id="contenedor" class="grid">
+  <div class="card" *ngFor="let lugar of listaLugares">
+    <img [src]="'assets/img/' + lugar.imagen" alt="{{ lugar.nombre }}">
+    
+    <div class="card-overlay">
+      <h3>{{ lugar.nombre }}</h3>
+      <p>{{ lugar.descripcion }}</p>
+      <p *ngIf="lugar.seguridad">Seguridad: {{ lugar.seguridad }} ⚠️</p>
+    </div>
+  </div>
+</div>
+
+<div id="modalAyuda" class="modal" *ngIf="mostrarModal">
+  <div class="modal-content">
+    <h2>Soporte Técnico</h2>
+    <p>Si tienes problemas contacta:</p>
+    <p>📧 soporte@tripify.com</p>
+    <p>📞 300 123 4567</p>
+    <button (click)="alternarAyuda(false)">Cerrar</button>
+  </div>
+</div>
